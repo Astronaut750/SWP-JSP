@@ -2,13 +2,13 @@ package models;
 
 import java.util.Objects;
 
-public class Benutzer {
+public class User {
 	private String email;
 	private String firstname;
 	private String lastname;
 	private String password;
 	
-	public Benutzer(String email, String firstname, String lastname, String password) {
+	public User(String email, String firstname, String lastname, String password) {
 		super();
 		this.email = email;
 		this.firstname = firstname;
@@ -16,7 +16,7 @@ public class Benutzer {
 		this.password = password;
 	}
 	
-	public Benutzer() { this("", "", "", ""); }
+	public User() { this("", "", "", ""); }
 
 	public String getEmail() {
 		return email;
@@ -54,5 +54,7 @@ public class Benutzer {
 		return Objects.hash(this.email, this.firstname, this.lastname, this.password);
 	}
 	
-	
+	public String ToString() {
+		return this.email + " " + this.firstname + " " + this.lastname + " " + this.password;
+	}
 }

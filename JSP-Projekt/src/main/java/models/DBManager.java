@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DBManager {
 	private static DBManager instance = null;
@@ -78,6 +80,30 @@ public class DBManager {
 			
 		}
 		return false;
+	}
+	
+	public List<User> fetchUsers(Connection conn) {
+		List<User> users = new ArrayList<User>();
+		String sql = "SELECT email, firstname, lastname, password FROM users";
+		ResultSet rs = null;
+		
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				String email = rs.getString(1);
+				String firstname = rs.getString(2);
+				String lastname = rs.getString(3);
+				String password = rs.getString(4);
+				users.add(new User(email, firstname, lastname, password));
+			}
+			rs.close();
+			rs = null;
+		}
+		catch (SQLException e) {
+			System.out.println("SQLException in DBManager.fetchUsers()");
+		}
+		return users;
 	}
 
 }

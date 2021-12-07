@@ -48,7 +48,7 @@ public class CheckRegister extends HttpServlet {
 		if(success) {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", email);
-			RequestDispatcher rd = request.getRequestDispatcher("LoginResponse.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("Home.jsp");
 			rd.forward(request, response);
 		}
 		else {

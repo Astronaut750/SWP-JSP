@@ -1,6 +1,7 @@
 package models;
 
 import java.sql.Connection;
+import java.util.List;
 
 public class RegisterService {
 	private static RegisterService instance = null;
@@ -25,5 +26,16 @@ public class RegisterService {
 		
 		db.closeConnection(conn);
 		return success;
+	}
+	public List<User> fetchUsers() {
+		DBManager db = DBManager.getInstance();
+		Connection conn = null;
+		conn = db.getConnection();
+		
+		List<User> users = db.fetchUsers(conn);
+		
+		db.closeConnection(conn);
+		
+		return users;
 	}
 }

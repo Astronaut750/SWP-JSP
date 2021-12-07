@@ -1,0 +1,48 @@
+@charset "ISO-8859-1";
+
+* {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#error {
+	color: #e63617;
+	
+	position: absolute;
+	left: 50%;
+	top: 70%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+h1 {
+	color: #064635;
+}
+
+body {
+	background-image: url("background.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.loginContainer {
+	padding: 20px;
+	border: 1px #ddd solid;
+	border-radius: 10px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+.title {
+	text-align: center;
+}
+
+.inputText {
+	text-align: right;
+}
+
+.marginVert {
+	margin: 20px 0;
+}

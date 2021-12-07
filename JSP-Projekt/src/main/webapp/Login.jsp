@@ -6,15 +6,10 @@
 <meta charset="ISO-8859-1">
 <title>Login</title>
 <link href="resources/Login.css" rel="stylesheet" type="text/css">
-<style type="text/css">
-.Error {
-}
-
-</style>
 </head>
 <body>
 
-<div class="loginContainer">
+<div class="container">
 	<h1 class="title">Login</h1>
 	
 	<form method="post" action="CheckLogin">
@@ -32,7 +27,7 @@
 		
 		<div class="title marginVert">
 			<button type="submit">Senden</button>
-			<a href="Register.jsp"><Button type="button">Register</Button></a>
+			<a href="Register.jsp"><Button type="button">Register instead</Button></a>
 		</div>
 	</form>
 </div>

@@ -12,6 +12,10 @@ public class LoginService {
 		return instance;
 	}
 	public boolean canLogin(String email, String password) {
+		if (email == "" || password == "") {
+			return false;
+		}
+		
 		DBManager db = DBManager.getInstance();
 		Connection conn = null;
 		

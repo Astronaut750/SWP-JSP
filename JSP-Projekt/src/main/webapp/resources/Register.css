@@ -9,17 +9,17 @@
 	
 	position: absolute;
 	left: 50%;
-	top: 70%;
+	top: 80%;
 	-webkit-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 }
 
 h1 {
-	color: #064635;
+	color: #6E3CBC;
 }
 
 body {
-	background-image: url("backgroundLogin.png");
+	background-image: url("backgroundRegister.png");
 	background-repeat: no-repeat;
 	background-size: cover;
 }

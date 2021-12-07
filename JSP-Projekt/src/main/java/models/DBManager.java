@@ -61,5 +61,23 @@ public class DBManager {
 		}
 		return false;
 	}
+	
+	public boolean canRegister(Connection conn, String email, String firstname, String lastname, String password) {
+		try {
+			String sql = "INSERT INTO users VALUES (?, ?, ?, ?);";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, email);
+			ps.setString(2, firstname);
+			ps.setString(3, lastname);
+			ps.setString(4, password);
+			ps.executeUpdate();
+			return true;
+		}
+		catch (SQLException e) {
+			System.out.println("SQLException in DBManager.canRegister()");
+			
+		}
+		return false;
+	}
 
 }

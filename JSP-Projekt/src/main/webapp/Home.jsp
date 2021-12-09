@@ -9,6 +9,9 @@
 </head>
 <body>
 
+<div class="backgroundImage">
+
+
 <div class="container">
 	<h1>Welcome
 		<%		
@@ -20,14 +23,20 @@
 		%>
 	</h1>
 	<div class="centeredText"><button onclick="FetchUsers()">Fetch users from DB</button></div>
-	<div id="dataTable"></div>
+	<div id="tableContainer"><table id="dataTable">
+	<tr>
+		<th>Email</th>
+		<th>Vorname</th>
+		<th>Nachname</th>
+		<th>Passwort</th>
+	</tr>
+	</table></div>
 </div>
 
-
+</div>
 <script>
 	function FetchUsers()
 	{
-		alert("hole daten");
 		const xhttp = new XMLHttpRequest();
 		  xhttp.onload = function() 
 		  {
@@ -40,7 +49,7 @@
 	}
 	function outputDataToTable(arr)
 	{
-		var str = "<table>";
+		var str = "";
 		for(var i = 0; i<arr.length;i++)
 		{
 			str +="<tr>";
@@ -50,9 +59,8 @@
 			str +="<td>" + arr[i].password + "</td>";
 			str +="</tr>";
 		}
-		str += "</table>";
 		var dataTable = document.getElementById("dataTable");
-		dataTable.innerHTML= str;
+		dataTable.innerHTML += str;
 	}
 </script>
 </body>

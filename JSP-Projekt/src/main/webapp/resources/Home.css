@@ -4,10 +4,19 @@
 	font-family: Arial, Helvetica, sans-serif;
 }
 
-body {
+body, html {
+	height: 100%;
+	margin: 0;
+}
+
+.backgroundImage {
+	position: relative;
 	background-image: url("backgroundHome.png");
+	
+	height: 100%;
 	background-repeat: no-repeat;
 	background-size: cover;
+	background-position: center;
 }
 
 .container {
@@ -29,6 +38,22 @@ h1 {
 	text-align: center;
 }
 
-#dataTable, table {
-	border: black solid 1px;
+#tableContainer {
+	margin-top: 2rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#dataTable {
+	border: 1px solid black;
+	border-right: 0;
+	border-top: 0;
+}
+
+td, th {
+	text-align: center;
+	padding: 10px;
+	border-top: 1px solid black;
+	border-right: 1px solid black;
 }

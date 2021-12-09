@@ -9,6 +9,8 @@
 </head>
 <body>
 
+<div class="backgroundImage">
+
 <div class="container">
 	<h1 class="title">Register</h1>
 	
@@ -45,5 +47,6 @@
 		out.append("<p id='error'>" + error + "</p>");
 	}
 %>
+</div>
 </body>
 </html>

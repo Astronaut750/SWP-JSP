@@ -11,7 +11,7 @@ public class LoginService {
 		}
 		return instance;
 	}
-	public boolean canLogin(String email, String password) {
+	public boolean canLogin(String email, String password, String errorMessage) {
 		if (email == "" || password == "") {
 			return false;
 		}
@@ -20,7 +20,7 @@ public class LoginService {
 		Connection conn = null;
 		
 		conn = db.getConnection();
-		boolean success = db.canLogin(conn, email, password);
+		boolean success = db.canLogin(conn, email, password, errorMessage);
 		
 		db.closeConnection(conn);
 		return success;

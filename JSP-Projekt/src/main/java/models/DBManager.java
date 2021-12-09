@@ -27,7 +27,6 @@ public class DBManager {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(url, "root", "root");
-			System.out.println("Connection to swp_holzmann successful");
 		} catch (ClassNotFoundException e) {
 			System.out.println("ClassNotFoundException in DBManager.getConnection()");
 		} catch (SQLException e) {
@@ -39,13 +38,18 @@ public class DBManager {
 	
 	public void closeConnection(Connection conn) {
 		try {
-			conn.close();
+			if (conn != null) {
+				conn.close();
+			}
+			else {
+				System.out.println("No connection to close");
+			}
 		} catch (SQLException e) {
 			System.out.println("SQLException in DBManager.closeConnection()");
 		}
 	}
 	
-	public boolean canLogin(Connection conn, String email, String password) {
+	public boolean canLogin(Connection conn, String email, String password, String errorMessage) {
 		try {
 			String sql = "SELECT email, password FROM users WHERE email=? AND password=?;";
 			PreparedStatement ps;
@@ -60,6 +64,11 @@ public class DBManager {
 			}
 		} catch (SQLException e) {
 			System.out.println("SQLException in DBManager.canLogin()");
+			errorMessage = "Login credentials wrong";
+		}
+		catch (NullPointerException e){
+			System.out.println("NullPointerException in DBManager.canLogin()");
+			errorMessage = "Connection to database was not successful";
 		}
 		return false;
 	}
@@ -102,6 +111,9 @@ public class DBManager {
 		}
 		catch (SQLException e) {
 			System.out.println("SQLException in DBManager.fetchUsers()");
+		}
+		catch (NullPointerException e){
+			System.out.println("NullPointerException in DBManager.canRegister()");
 		}
 		return users;
 	}

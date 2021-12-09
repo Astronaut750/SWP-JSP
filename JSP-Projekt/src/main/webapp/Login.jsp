@@ -8,7 +8,7 @@
 <link href="resources/Login.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-
+<div class="backgroundImage">
 <div class="container">
 	<h1 class="title">Login</h1>
 	
@@ -37,5 +37,6 @@
 		out.append("<p id='error'>" + error + "</p>");
 	}
 %>
+</div>
 </body>
 </html>

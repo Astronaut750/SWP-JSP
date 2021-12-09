@@ -18,10 +18,19 @@ h1 {
 	color: #064635;
 }
 
-body {
+body, html {
+	height: 100%;
+	margin: 0;
+}
+
+.backgroundImage {
+	position: relative;
 	background-image: url("backgroundLogin.png");
+	
+	height: 100%;
 	background-repeat: no-repeat;
 	background-size: cover;
+	background-position: center;
 }
 
 .container {

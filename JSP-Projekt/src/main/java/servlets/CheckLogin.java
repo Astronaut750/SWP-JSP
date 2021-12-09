@@ -40,8 +40,9 @@ public class CheckLogin extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
+		String errorMessage = "Login failed";
 		
-		boolean success = LoginService.getInstance().canLogin(email, password);
+		boolean success = LoginService.getInstance().canLogin(email, password, errorMessage);
 		
 		if (success) {
 			HttpSession session = request.getSession();
@@ -50,7 +51,7 @@ public class CheckLogin extends HttpServlet {
 			rd.forward(request, response);
 		}
 		else {
-			request.setAttribute("errorMessage", "Login-Credentials wrong");
+			request.setAttribute("errorMessage", errorMessage);
 			RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
 			rd.forward(request, response);
 		}

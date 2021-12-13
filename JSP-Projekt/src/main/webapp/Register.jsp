@@ -36,7 +36,7 @@
 		</table>
 		
 		<div class="title marginVert">
-			<button type="submit">Senden</button>
+			<button type="submit">Register</button>
 			<a href="Login.jsp"><Button type="button">Login instead</Button></a>
 		</div>
 	</form>

@@ -57,3 +57,23 @@ td, th {
 	border-top: 1px solid black;
 	border-right: 1px solid black;
 }
+
+.coursesGrid {
+	margin: 10px;
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-gap: 10px;
+}
+
+.course {
+	border: 1px solid black;
+}
+
+.courseTitle {
+	font-weight: bold;
+	text-align: center;
+}
+
+.courseVideos {
+	margin-left: 10px;
+}

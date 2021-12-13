@@ -25,7 +25,7 @@ body, html {
 
 .backgroundImage {
 	position: relative;
-	background-image: url("backgroundLogin.png");
+	background-image: url("backgroundRegister.png");
 	
 	height: 100%;
 	background-repeat: no-repeat;

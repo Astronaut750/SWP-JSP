@@ -77,3 +77,26 @@ td, th {
 .courseVideos {
 	margin-left: 10px;
 }
+
+.nav {
+	display: flex;
+	flex: 1;
+	flex-direction: row;
+	justify-content: space-between;
+}
+.navItem {
+	border-radius: 10px;
+	padding: 5px;
+	border-style: solid;
+	border-width: 2px;
+}
+
+#navLogin {
+	color: #064635;
+	border-color: #064635;
+}
+
+#navRegister {
+	color: #6E3CBC;
+	border-color: #6E3CBC;
+}

@@ -117,5 +117,34 @@ public class DBManager {
 		}
 		return users;
 	}
+	
+	public List<Course> fetchCourses(Connection conn) {
+		List<Course> courses = new ArrayList<Course>();
+		String sql = "SELECT coursesId, imageString, title, videosCount, videosAvgLen, price FROM courses";
+		ResultSet rs = null;
+		
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				int coursesId = rs.getInt(1);
+				String imageString = rs.getString(2);
+				String title = rs.getString(3);
+				String videosCount = rs.getString(4);
+				String videosAvgLen = rs.getString(5);
+				double price = rs.getDouble(6);
+				courses.add(new Course(coursesId, imageString, title, videosCount, videosAvgLen, price));
+			}
+			rs.close();
+			rs = null;
+		}
+		catch (SQLException e) {
+			System.out.println("SQLException in DBManager.fetchCourses()");
+		}
+		catch (NullPointerException e){
+			System.out.println("NullPointerException in DBManager.canRegister()");
+		}
+		return courses;
+	}
 
 }

@@ -13,6 +13,10 @@
 
 
 <div class="container">
+	<div class="nav">
+		<a href="Login.jsp"><div id="navLogin" class="navItem">Login</div></a>
+		<a href="Register.jsp"><div id="navRegister" class="navItem">Register</div></a>
+	</div>
 	<h1>Welcome
 		<%		
 			String u = (String) session.getAttribute("user");	
@@ -22,34 +26,17 @@
 			}
 		%>
 	</h1>
-	<div class="centeredText"><button onclick="FetchUsers()">Fetch users from DB</button></div>
+	<div class="centeredText"><button onclick="FetchCourses()">Fetch courses from DB</button></div>
 	
-	<div class="coursesGrid">
-		<div class="course">
+	<div id="coursesData" class="coursesGrid">
+	</div>
+	
+	<!-- <div class="course">
 			<img src="resources/courseReact.jpg"><br>
 			<p class="courseTitle">React.js Course</p>
 			<p class="courseVideos">48 Lessons á ~ 35 Minutes</p>
 			<p class="coursePricing">1,900.00 $</p>
-		</div>
-		<div class="course">
-			<img src="resources/courseAngular.jpg"><br>
-			<p class="courseTitle">Angular Course</p>
-			<p class="courseVideos">42 Lessons á ~ 30 Minutes</p>
-			<p class="coursePricing">1,800.00 $</p>
-		</div>
-		<div class="course">
-			<img src="resources/courseVue.jpg"><br>
-			<p class="courseTitle">Vue.js Course</p>
-			<p class="courseVideos">39 Lessons á ~ 45 Minutes</p>
-			<p class="coursePricing">1,700.00 $</p>
-		</div>
-		<div class="course">
-			<img src="resources/courseSvelte.jpg"><br>
-			<p class="courseTitle">Svelte Course</p>
-			<p class="courseVideos">37 Lessons á ~ 39 Minutes</p>
-			<p class="coursePricing">1,500.00 $</p>
-		</div>
-	</div>
+		</div> -->
 	
 	
 	
@@ -66,7 +53,8 @@
 </div>
 
 </div>
-<script type="text/javascript">
+<script src="FetchCourses.js"></script>
+<!--  <script type="text/javascript">
 
 function FetchCourses() {
 	const xhttp = new XMLHttpRequest();
@@ -87,7 +75,7 @@ function outputCourses {
 </div>
 }
 
-</script>
+</script>-->
 <script>
 	function FetchUsers()
 	{

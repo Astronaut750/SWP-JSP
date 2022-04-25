@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+
+<%@ page import="models.*" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.util.List" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,8 +15,6 @@
 <body>
 
 <div class="backgroundImage">
-
-
 <div class="container">
 	<div class="nav">
 		<a href="Login.jsp"><div id="navLogin" class="navItem">Login</div></a>
@@ -26,89 +29,40 @@
 			}
 		%>
 	</h1>
+	
 	<div class="centeredText"><button onclick="FetchCourses()">Fetch courses from DB</button></div>
+	
+	<table>
+	<%
+		DBManager db = DBManager.getInstance();
+		Connection con = db.getConnection();
+		List<Course> cs = db.fetchCourses(con);
+		for(Course c : cs){
+			out.append("<tr>");
+			out.append("<td>" + c.getCoursesId() + "</td>");
+			out.append("<td>" + c.getTitle() + "</td>");
+			out.append("<td>" + c.getVideosCount() + "</td>");
+			out.append("<td>" + c.getVideosAvgLen() + "</td>");
+			out.append("<td>" + c.getPrice() + "</td>");
+			out.append("<td>" + c.getImageString() + "</td>");
+			out.append("<td><a href='Aendern.jsp" +
+					"?id=" + c.getCoursesId() + 
+					"&title=" + c.getTitle() +
+					"&videosCount=" + c.getVideosCount() +
+					"&videosAvgLen=" + c.getVideosAvgLen() +
+					"&price=" + c.getPrice() +
+					"&imageString=" + c.getImageString() +
+					"'>Aktualisieren</a></td>");
+			out.append("</tr>");
+		}
+	%>
+	</table>
 	
 	<div id="coursesData" class="coursesGrid">
 	</div>
 	
-	<!-- <div class="course">
-			<img src="resources/courseReact.jpg"><br>
-			<p class="courseTitle">React.js Course</p>
-			<p class="courseVideos">48 Lessons á ~ 35 Minutes</p>
-			<p class="coursePricing">1,900.00 $</p>
-		</div> -->
-	
-	
-	
-	<!--<div id="tableContainer">
-		<table id="dataTable">
-			<tr>
-				<th>Email</th>
-				<th>Vorname</th>
-				<th>Nachname</th>
-				<th>Passwort</th>
-			</tr>
-		</table>
-	</div>-->
 </div>
-
 </div>
 <script src="FetchCourses.js"></script>
-<!--  <script type="text/javascript">
-
-function FetchCourses() {
-	const xhttp = new XMLHttpRequest();
-	xhttp.onload = function() {
-		var courses = JSON.parse(this.responseText);
-		outputCourses(courses);
-	}
-	xhttp.open("Post", "FetchCourses", true);
-	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhttp.send();
-}
-
-function outputCourses {
-	var str = '<div class="course"> <img alt="courseReact" src="resources/courseReact.jpg"><br>'
-	<p class="courseTitle">React.js Course</p>
-	<p class="courseVideos">48 Lessons á ~35 min</p>
-	<p class="coursePricing">1,900.00 $</p>
-</div>
-}
-
-</script>-->
-<script>
-	function FetchUsers()
-	{
-		const xhttp = new XMLHttpRequest();
-		  xhttp.onload = function() 
-		  {
-			  var arr = JSON.parse(this.responseText);
-			  outputDataToTable(arr);
-		  }
-		  xhttp.open("Post", "FetchUsers", true);
-		  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		  xhttp.send();
-	}
-	function outputDataToTable(arr)
-	{
-		var str = "<tr>";
-			str += "<th>Email</th>";
-			str += "<th>Vorname</th>";
-			str += "<th>Nachname</th>";
-			str += "<th>Passwort</th>";
-			str += "</tr>";
-		for(var i = 0; i<arr.length;i++)
-		{
-			str +="<tr>";
-			str +="<td>" + arr[i].email + "</td>";
-			str +="<td>" + arr[i].firstname + "</td>";
-			str +="<td>" + arr[i].lastname + "</td>";
-			str +="<td>" + arr[i].password + "</td>";
-			str +="</tr>";
-		}
-		var dataTable = document.getElementById("dataTable");
-		dataTable.innerHTML = str;
-	}
-</script>
 </body>
 </html>

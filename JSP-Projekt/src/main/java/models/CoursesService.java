@@ -23,4 +23,11 @@ public class CoursesService {
 		
 		return courses;
 	}
+	
+	public void updateCourse(Course course) {
+		DBManager db = DBManager.getInstance();
+		Connection conn = null;
+		conn = db.getConnection();
+		db.updateCourse(conn, course);
+	}
 }

@@ -146,5 +146,27 @@ public class DBManager {
 		}
 		return courses;
 	}
+	
+	public boolean updateCourse(Connection conn, Course c) {
+		
+		String sql = "UPDATE courses SET title=?, videosCount=?, videosAvgLen=?, price=?, imageString=? WHERE coursesId = ?;";
+		
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, c.getTitle());
+			ps.setString(2, c.getVideosCount());
+			ps.setString(3, c.getVideosAvgLen());
+			ps.setDouble(4, c.getPrice());
+			ps.setString(5, c.getImageString());
+			ps.setInt(6, c.getCoursesId());
+			ps.executeUpdate();
+			return true;
+		}
+		catch(SQLException e) {
+			System.out.println("SQLException updateCourse in DBManager");
+		}
+		
+		return false;
+	}
 
 }
